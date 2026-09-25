@@ -11,7 +11,7 @@ export function IntroPanel({ level, onBegin }: { level: Level; onBegin: () => vo
         <Chip tone="skill" size="md">{level.skill}</Chip>
         <Chip tone="blue" size="md">Dagens ord: {level.word.w}</Chip>
       </div>
-      <h1 className={s.title}>{level.name}</h1>
+      <h2 className={s.title}>{level.name}</h2>
       <p className={s.intro}>{level.intro}</p>
       <StepList titles={level.steps.map((x) => x.title)} />
       <ChunkyButton style={{ marginTop: 'auto', flexShrink: 0 }} onClick={onBegin}>

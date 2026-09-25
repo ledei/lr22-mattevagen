@@ -3,11 +3,12 @@ import { AgainNote, RewardItemCard, RewardWordCard } from '@/components/organism
 import { ColumnTemplate } from '@/components/templates';
 import { useLayout } from '@/hooks/useLayout';
 import { currentLevel, useGame } from '@/store/gameStore';
+import { useShallow } from 'zustand/react/shallow';
 import s from './RewardPage.module.css';
 
 export function RewardPage() {
   const { wide, colPadX } = useLayout();
-  const st = useGame();
+  const st = useGame(useShallow((s) => ({ avatar: s.avatar, cardIn: s.cardIn, equip: s.equip, lv: s.lv, reward: s.reward, si: s.si, toMap: s.toMap })));
   const L = currentLevel(st);
   const r = st.reward;
 

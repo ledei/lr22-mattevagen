@@ -255,7 +255,7 @@ export const useGame = create<GameState>()(
           set({ baskets: b, pile, msg: '' });
           if (pile === 0) {
             if (b.every((x) => x === b[0])) complete();
-            else nudge('Är det rättvist? Alla ska ha lika många. Tryck på ett äpple i en korg för att lägga tillbaka det.');
+            else nudge('Är det rättvist? Alla ska ha lika många. Tryck på − vid en korg för att ta tillbaka ett äpple.');
           }
         },
         returnApple: (i) => {

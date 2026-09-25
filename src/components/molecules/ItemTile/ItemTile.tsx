@@ -20,7 +20,7 @@ export function ItemTile({ name, preview, selected, locked, lockText, onPick }: 
       onClick={onPick}
       aria-pressed={selected}
       aria-disabled={locked}
-      style={{ borderColor: selected ? 'var(--orange)' : 'oklch(0.92 0.01 260)', background: selected ? 'oklch(0.97 0.04 70)' : 'var(--white)' }}
+      style={{ borderColor: selected ? 'var(--orange)' : 'var(--surface-muted)', background: selected ? 'oklch(0.97 0.04 70)' : 'var(--white)' }}
     >
       <div style={{ opacity: locked ? 0.35 : 1 }}>
         <Figur {...preview} size={52} />

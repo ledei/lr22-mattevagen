@@ -11,6 +11,8 @@ export interface StageLayout {
   vw: number;
   vh: number;
   wide: boolean;
+  /** phone held sideways: too short to play, ask the child to turn it */
+  rotate: boolean;
   /** logical canvas size and scale */
   LW: number;
   LH: number;
@@ -41,10 +43,14 @@ export interface StageLayout {
  * The whole game is drawn on a logical canvas scaled with `transform: scale()` to fill
  * the window exactly (no letterboxing). See "Responsive layout" in the handoff README.
  */
-export function computeLayout(vwIn: number, vhIn: number, mode: LayoutMode = 'Automatisk'): StageLayout {
+export function computeLayout(vwIn: number, vhIn: number, mode: LayoutMode = 'Automatisk', coarsePointer = false): StageLayout {
   const vw = vwIn || 390;
   const vh = vhIn || 844;
-  const wide = mode === 'Desktop' || (mode === 'Automatisk' && vw >= 900 && vh >= 520);
+  // Short and wide. On a touch phone the canvas would shrink to ~47 %, so we ask for portrait;
+  // a short desktop window uses the desktop layout instead of a stretched phone layout.
+  const shortLandscape = mode === 'Automatisk' && vw > vh && vh < 520;
+  const rotate = shortLandscape && coarsePointer;
+  const wide = mode === 'Desktop' || (mode === 'Automatisk' && ((vw >= 900 && vh >= 520) || (shortLandscape && !coarsePointer)));
 
   let LW: number, LH: number, sc: number;
   if (wide) {
@@ -71,7 +77,7 @@ export function computeLayout(vwIn: number, vhIn: number, mode: LayoutMode = 'Au
   const wideMapTop = TOPBAR_H + Math.max(0, (LH - 184 - MAP_H * wFit) / 2);
 
   return {
-    vw, vh, wide, LW, LH, sc,
+    vw, vh, wide, rotate, LW, LH, sc,
     stageLeft: (vw - LW * sc) / 2,
     stageTop: (vh - LH * sc) / 2,
     xo,

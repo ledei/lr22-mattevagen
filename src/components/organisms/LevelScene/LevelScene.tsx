@@ -2,6 +2,7 @@ import { Cloud, Figur } from '@/components/atoms';
 import type { Obstacle } from '@/data/types';
 import { useLayout } from '@/hooks/useLayout';
 import { currentLevel, useGame } from '@/store/gameStore';
+import { useShallow } from 'zustand/react/shallow';
 import { AppleTree, Birds, Gate, River, Stones, Troll, Wall } from './obstacles';
 import s from './LevelScene.module.css';
 
@@ -10,12 +11,12 @@ const OBSTACLES: Record<Obstacle, typeof Wall> = { wall: Wall, river: River, sto
 /** The 390×226 scene: sky, sun, clouds, hills, ground, the level's obstacle and the walking figure. */
 export function LevelScene() {
   const { sceneScale } = useLayout();
-  const st = useGame();
+  const st = useGame(useShallow((s) => ({ added: s.added, avatar: s.avatar, charX: s.charX, found: s.found, gone: s.gone, lv: s.lv, pat: s.pat, phase: s.phase, pile: s.pile, si: s.si, sorted: s.sorted, walking: s.walking })));
   const L = currentLevel(st);
   const Ob = OBSTACLES[L.ob];
 
   return (
-    <div className={s.scene} style={{ transform: `scale(${sceneScale})` }}>
+    <div className={s.scene} aria-hidden style={{ transform: `scale(${sceneScale})` }}>
       <div className={s.sunGlow} />
       <div className={s.sun} />
       <Cloud top={84} width={80} height={24} opacity={0.85} duration={34} delay={-14} />

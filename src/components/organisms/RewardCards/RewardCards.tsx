@@ -22,18 +22,18 @@ export function RewardItemCard({ name, preview }: { name: string; preview: Avata
         <Figur {...preview} size={62} />
       </div>
       <div className={s.itemText}>
-        <Eyebrow size={12} spacing=".08em" color="oklch(0.6 0.16 45)">Nytt föremål</Eyebrow>
+        <Eyebrow size={12} spacing=".08em" color="var(--orange-d)">Nytt föremål</Eyebrow>
         <div className={s.itemName}>{name}</div>
       </div>
     </div>
   );
 }
 
-/** Spaced repetition teaser. */
+/** What comes later in the game. Promises only content that exists in the plan (World 2), no repetition system. */
 export function AgainNote({ text }: { text: string }) {
   return (
     <div className={s.again}>
-      <strong>Kommer tillbaka:</strong> {text}
+      <strong>Längre fram:</strong> {text}
     </div>
   );
 }

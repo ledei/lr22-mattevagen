@@ -40,7 +40,7 @@ export function MapNode({ id, x, y, riddle, locked, done, current, skill, name, 
         onClick={onOpen}
         aria-label={`${name}${locked ? ' (låst)' : done ? ' (klar)' : ''}`}
         aria-disabled={locked}
-        style={{ background: bg, boxShadow: `0 6px 0 ${shadow}`, cursor: locked ? 'default' : 'pointer' }}
+        style={{ background: bg, boxShadow: `0 6px 0 ${shadow}`, color: locked ? 'var(--locked-ink)' : 'var(--white)', cursor: locked ? 'default' : 'pointer' }}
       >
         {done ? '✓' : riddle ? '?' : String(id)}
       </button>

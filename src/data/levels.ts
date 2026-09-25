@@ -115,7 +115,7 @@ export const TREE: [number, number][] = [[18, 22], [44, 12], [72, 18], [88, 40],
 
 export const FRIENDS: { head: string; shirt: string }[] = [
   { head: 'oklch(0.8 0.1 60)', shirt: 'oklch(0.66 0.14 245)' },
-  { head: 'oklch(0.55 0.08 45)', shirt: 'oklch(0.74 0.16 55)' },
+  { head: 'oklch(0.55 0.08 45)', shirt: 'var(--orange)' },
   { head: 'oklch(0.88 0.06 70)', shirt: 'oklch(0.62 0.15 300)' },
 ];
 

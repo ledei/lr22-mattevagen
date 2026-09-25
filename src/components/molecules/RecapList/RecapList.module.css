@@ -1,4 +1,4 @@
 .row { display: flex; align-items: center; gap: 10px; }
 .title { font-weight: 800; font-size: 15px; }
 .spacer { flex: 1; }
-.done { font-weight: 700; font-size: 14px; color: oklch(0.5 0.03 260); text-align: right; }
+.done { font-weight: 700; font-size: 14px; color: var(--ink-soft); text-align: right; }

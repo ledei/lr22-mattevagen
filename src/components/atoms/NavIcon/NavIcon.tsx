@@ -20,8 +20,8 @@ export function NavIcon({ kind, color }: { kind: 'avatar' | 'map' | 'words'; col
 export function BookIcon() {
   return (
     <div style={{ display: 'flex', gap: 1 }}>
-      <div style={{ width: 7, height: 12, borderRadius: 2, background: 'oklch(0.62 0.14 250)' }} />
-      <div style={{ width: 7, height: 12, borderRadius: 2, background: 'oklch(0.74 0.16 55)' }} />
+      <div style={{ width: 7, height: 12, borderRadius: 2, background: 'var(--pat-blue)' }} />
+      <div style={{ width: 7, height: 12, borderRadius: 2, background: 'var(--orange)' }} />
     </div>
   );
 }

@@ -2,9 +2,10 @@ import { LevelHud } from '@/components/molecules';
 import { DonePanel, IntroPanel, LevelScene, WorkPanel } from '@/components/organisms';
 import { LevelTemplate } from '@/components/templates';
 import { currentLevel, isSupportActive, useGame } from '@/store/gameStore';
+import { useShallow } from 'zustand/react/shallow';
 
 export function LevelPage() {
-  const st = useGame();
+  const st = useGame(useShallow((s) => ({ autoSupport: s.autoSupport, begin: s.begin, exitLevel: s.exitLevel, finish: s.finish, lv: s.lv, phase: s.phase, si: s.si, support: s.support })));
   const L = currentLevel(st);
 
   return (

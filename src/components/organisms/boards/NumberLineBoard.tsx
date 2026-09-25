@@ -1,14 +1,15 @@
 import { Figur } from '@/components/atoms';
 import { pop } from '@/lib/motion';
 import { currentLevel, currentStep, useGame } from '@/store/gameStore';
-import { C } from '@/styles/colors';
+import { useShallow } from 'zustand/react/shallow';
+import { C, STRONG } from '@/styles/colors';
 import s from './boards.module.css';
 
 const GAP = 32;
 
 /** Number line 0–10 with hop arcs (green forward, red back) and a hop counter. */
 export function NumberLineBoard() {
-  const st = useGame();
+  const st = useGame(useShallow((s) => ({ avatar: s.avatar, hops: s.hops, locked: s.locked, lv: s.lv, phase: s.phase, pos: s.pos, si: s.si, stepHops: s.stepHops, tapStone: s.tapStone })));
   const L = currentLevel(st);
   const step = currentStep(st);
   const work = st.phase === 'work';
@@ -22,7 +23,7 @@ export function NumberLineBoard() {
           const color = h.dir > 0 ? C.green : C.red;
           return (
             <div key={i} className={s.arc} style={{ left: Math.min(h.from, h.to) * GAP + 15, borderColor: color }}>
-              <div className={s.arcNum} style={{ background: color }}>{h.k}</div>
+              <div className={s.arcNum} style={{ background: h.dir > 0 ? STRONG.green : STRONG.red }}>{h.k}</div>
             </div>
           );
         })}
@@ -33,7 +34,7 @@ export function NumberLineBoard() {
             <button
               key={n}
               type="button"
-              className={s.stone}
+              className={`${s.stone} ${tg ? s.stoneTarget : ''}`}
               aria-label={`Sten ${n}`}
               onClick={(e) => { pop(e.currentTarget); st.tapStone(n); }}
               style={{

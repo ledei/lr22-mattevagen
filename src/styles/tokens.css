@@ -1,11 +1,22 @@
-/* Design tokens. oklch values are the source of truth (see handoff README). */
+/*
+ * Design tokens – the single source for colour. `styles/colors.ts` only points at these.
+ * oklch values come from the handoff; the primaries are darkened so white text meets
+ * WCAG AA (large text ≥ 3:1, small text ≥ 4.5:1).
+ */
 :root {
+  /* ink & paper */
   --ink: oklch(0.3 0.04 260);
   --ink-muted: oklch(0.5 0.04 260);
   --ink-soft: oklch(0.5 0.03 260);
+  --ink-faint: oklch(0.48 0.03 260);
   --paper: oklch(0.98 0.01 90);
+  --paper-bright: oklch(0.99 0.01 90);
   --white: oklch(1 0 0);
+  --surface-sunk: oklch(0.94 0.01 260);
+  --surface-muted: oklch(0.92 0.01 260);
+  --line: oklch(0.9 0.01 260);
 
+  /* world */
   --grass: oklch(0.84 0.12 140);
   --grass-light: oklch(0.87 0.11 140);
   --tree: oklch(0.62 0.15 145);
@@ -14,28 +25,55 @@
   --sky: oklch(0.88 0.07 225);
   --sky-riddle: oklch(0.84 0.06 300);
   --reward-bg: oklch(0.86 0.07 230);
+  --avatar-bg: oklch(0.88 0.07 230);
+  --words-bg: oklch(0.97 0.01 90);
   --pond: oklch(0.78 0.1 225);
   --pond-shadow: oklch(0.7 0.11 230);
 
-  --orange: oklch(0.74 0.16 55);
-  --orange-d: oklch(0.6 0.16 45);
-  --green: oklch(0.72 0.16 145);
-  --green-d: oklch(0.56 0.14 145);
+  /* primaries – white text on these passes AA for large text */
+  --orange: oklch(0.66 0.17 50);
+  --orange-d: oklch(0.53 0.16 42);
+  /* small white text (step dots, badges, active menu item) needs 4.5:1 */
+  --orange-strong: oklch(0.57 0.16 45);
+  --green: oklch(0.64 0.15 145);
+  --green-d: oklch(0.5 0.13 145);
   --purple: oklch(0.6 0.17 300);
   --purple-d: oklch(0.46 0.15 300);
   --locked: oklch(0.8 0.02 150);
   --locked-d: oklch(0.66 0.03 150);
-  --blue-chip: oklch(0.58 0.14 245);
-  --blue-chip-d: oklch(0.48 0.13 250);
+  --locked-ink: oklch(0.42 0.03 150);
+  --blue-chip: oklch(0.54 0.14 248);
+  --blue-chip-d: oklch(0.44 0.13 250);
   --help-yellow: oklch(0.9 0.12 92);
   --gold: oklch(0.84 0.16 85);
 
+  /* game pieces */
+  --pat-red: oklch(0.66 0.18 28);
+  --pat-blue: oklch(0.62 0.14 250);
+  --piece-yellow: oklch(0.8 0.15 85);
+  --stone: oklch(0.64 0.02 260);
+  --apple: oklch(0.62 0.2 25);
+  --green-apple: oklch(0.7 0.17 135);
+  --hop-back: oklch(0.63 0.2 25);
+  /* darker twins for small white numbers on pieces (≥ 4.5:1) */
+  --pat-red-strong: oklch(0.56 0.18 28);
+  --pat-blue-strong: oklch(0.53 0.14 250);
+  --yellow-strong: oklch(0.56 0.12 75);
+  --green-strong: oklch(0.52 0.13 145);
+  --hop-back-strong: oklch(0.55 0.2 25);
+
+  /* chips & feedback */
   --chip-green-bg: oklch(0.93 0.05 145);
   --chip-green-fg: oklch(0.4 0.12 145);
   --chip-blue-bg: oklch(0.93 0.04 250);
   --chip-blue-fg: oklch(0.42 0.12 250);
+  --success-bg: oklch(0.93 0.07 145);
+  --success-fg: oklch(0.38 0.12 145);
+  --hint-bg: oklch(0.95 0.07 92);
+  --hint-fg: oklch(0.36 0.06 70);
 
   --card-shadow: 0 4px 0 oklch(0.9 0.02 90);
+  --focus-ring: oklch(0.5 0.16 250);
 
   --font-display: 'Baloo 2', sans-serif;
   --font-body: 'Nunito', sans-serif;

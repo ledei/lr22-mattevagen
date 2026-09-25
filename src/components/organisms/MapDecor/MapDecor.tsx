@@ -1,4 +1,4 @@
-import type { CSSProperties } from 'react';
+import type { CSSProperties, Ref } from 'react';
 import { Cloud, Flower, Pond, Tree } from '@/components/atoms';
 import s from './MapDecor.module.css';
 
@@ -28,11 +28,14 @@ const FLOWERS: { side: 'left' | 'right'; x: string; y: string; c: string }[] = [
 
 const pos = (side: 'left' | 'right', x: string, y: string): CSSProperties => ({ [side]: x, top: y });
 
-/** Desktop-only decoration layer across the full width, with pointer parallax. */
-export function MapDecor({ px, py }: { px: number; py: number }) {
+/**
+ * Desktop-only decoration layer across the full width. The parent moves `layerRef`
+ * directly for the pointer parallax, so the map does not re-render on mouse move.
+ */
+export function MapDecor({ layerRef }: { layerRef?: Ref<HTMLDivElement> }) {
   return (
     <>
-      <div className={s.layer} style={{ transform: `translate(${px * -26}px,${py * -16}px)` }}>
+      <div ref={layerRef} className={s.layer} aria-hidden>
         <div className={s.hill} style={{ left: -180, top: '52%', width: 520, height: 520 }} />
         <div className={s.hill} style={{ right: -160, top: '-14%', width: 480, height: 480 }} />
         <div className={s.hill} style={{ right: -100, top: '68%', width: 360, height: 360 }} />

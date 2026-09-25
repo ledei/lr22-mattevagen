@@ -31,3 +31,6 @@ export const shake = (el: Element | null) =>
 
 export const messageIn = (el: Element | null) =>
   animate(el, [{ transform: 'scale(0.9)', opacity: 0 }, { transform: 'scale(1.03)', opacity: 1 }, { transform: 'scale(1)', opacity: 1 }], { duration: 300, easing: 'ease-out' });
+
+/** Map decor parallax for a pointer position of −0.5…0.5 across the map. */
+export const parallaxTransform = (px: number, py: number) => `translate(${px * -26}px,${py * -16}px)`;
