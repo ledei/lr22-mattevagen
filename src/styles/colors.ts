@@ -1,31 +1,44 @@
-/** Game palette (`C` in the prototype). oklch values are the source of truth. */
+/**
+ * Game palette for inline styles. Values point at the CSS tokens in `tokens.css`,
+ * which is the single source of truth for colour.
+ */
 export const C = {
-  ink: 'oklch(0.3 0.04 260)',
-  orange: 'oklch(0.74 0.16 55)',
-  orangeD: 'oklch(0.6 0.16 45)',
-  green: 'oklch(0.72 0.16 145)',
-  greenD: 'oklch(0.56 0.14 145)',
-  purple: 'oklch(0.6 0.17 300)',
-  purpleD: 'oklch(0.46 0.15 300)',
-  gray: 'oklch(0.8 0.02 150)',
-  grayD: 'oklch(0.66 0.03 150)',
-  stone: 'oklch(0.64 0.02 260)',
-  yellow: 'oklch(0.8 0.15 85)',
-  apple: 'oklch(0.62 0.2 25)',
-  gApple: 'oklch(0.7 0.17 135)',
-  R: 'oklch(0.66 0.18 28)',
-  B: 'oklch(0.62 0.14 250)',
-  red: 'oklch(0.63 0.2 25)',
-  white: 'oklch(1 0 0)',
+  ink: 'var(--ink)',
+  orange: 'var(--orange)',
+  orangeD: 'var(--orange-d)',
+  orangeStrong: 'var(--orange-strong)',
+  green: 'var(--green)',
+  greenD: 'var(--green-d)',
+  purple: 'var(--purple)',
+  purpleD: 'var(--purple-d)',
+  gray: 'var(--locked)',
+  grayD: 'var(--locked-d)',
+  stone: 'var(--stone)',
+  yellow: 'var(--piece-yellow)',
+  apple: 'var(--apple)',
+  gApple: 'var(--green-apple)',
+  R: 'var(--pat-red)',
+  B: 'var(--pat-blue)',
+  red: 'var(--hop-back)',
+  white: 'var(--white)',
 } as const;
 
 export type ColorKey = keyof typeof C;
 
-/** Page background per screen (`BG` in the prototype). */
+/** Darker twins used behind small white numbers (bar counts, hop numbers). */
+export const STRONG: Partial<Record<ColorKey, string>> = {
+  R: 'var(--pat-red-strong)',
+  B: 'var(--pat-blue-strong)',
+  yellow: 'var(--yellow-strong)',
+  green: 'var(--green-strong)',
+  red: 'var(--hop-back-strong)',
+};
+
+/** Page background per screen. */
 export const SCREEN_BG = {
-  map: 'oklch(0.84 0.12 140)',
-  level: 'oklch(0.98 0.01 90)',
-  reward: 'oklch(0.86 0.07 230)',
-  avatar: 'oklch(0.88 0.07 230)',
-  words: 'oklch(0.97 0.01 90)',
+  map: 'var(--grass)',
+  level: 'var(--paper)',
+  reward: 'var(--reward-bg)',
+  avatar: 'var(--avatar-bg)',
+  words: 'var(--words-bg)',
 } as const;

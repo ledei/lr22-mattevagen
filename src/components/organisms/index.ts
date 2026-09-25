@@ -7,6 +7,7 @@ export { LevelScene } from './LevelScene/LevelScene';
 export { MapDecor } from './MapDecor/MapDecor';
 export { MapTopBar } from './MapTopBar/MapTopBar';
 export { NextLevelCard } from './NextLevelCard/NextLevelCard';
+export { RotateHint } from './RotateHint/RotateHint';
 export { AgainNote, RewardItemCard, RewardWordCard } from './RewardCards/RewardCards';
 export { ItemPicker } from './ItemPicker/ItemPicker';
 export { WordBook } from './WordBook/WordBook';

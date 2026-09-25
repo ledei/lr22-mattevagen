@@ -1,2 +1,2 @@
-.sheet { flex: 1; background: oklch(0.99 0.01 90); border-radius: 28px 28px 0 0; padding: 16px 16px 12px; display: flex; flex-direction: column; gap: 14px; overflow: auto; }
+.sheet { flex: 1; background: var(--paper-bright); border-radius: 28px 28px 0 0; padding: 16px 16px 12px; display: flex; flex-direction: column; gap: 14px; overflow: auto; }
 .grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }

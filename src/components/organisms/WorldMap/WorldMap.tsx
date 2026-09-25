@@ -3,6 +3,7 @@ import { MapNode, PlayPill } from '@/components/molecules';
 import { LEVEL_COUNT, LV, NODES } from '@/data/levels';
 import { catmullRom } from '@/lib/curve';
 import { useGame } from '@/store/gameStore';
+import { useShallow } from 'zustand/react/shallow';
 import s from './WorldMap.module.css';
 
 const PATH = catmullRom(NODES);
@@ -12,7 +13,7 @@ const MAP_TREES: [number, number, number, number][] = [
 
 /** The 390×696 world map: path, nodes, house, castle and the avatar. Zooms into a node when a level opens. */
 export function WorldMap() {
-  const { unlocked, done, zoom, avatarNode, avatar, mapWalk, openLevel } = useGame();
+  const { unlocked, done, zoom, avatarNode, avatar, mapWalk, openLevel } = useGame(useShallow((s) => ({ unlocked: s.unlocked, done: s.done, zoom: s.zoom, avatarNode: s.avatarNode, avatar: s.avatar, mapWalk: s.mapWalk, openLevel: s.openLevel })));
   const current = Math.min(unlocked, LEVEL_COUNT);
   const cp = NODES[current];
   const an = NODES[avatarNode];

@@ -2,13 +2,14 @@ import { ItemTile, SegmentedControl } from '@/components/molecules';
 import { ITEMS } from '@/data/levels';
 import type { Slot } from '@/data/types';
 import { useGame } from '@/store/gameStore';
+import { useShallow } from 'zustand/react/shallow';
 import s from './ItemPicker.module.css';
 
 const TABS: [Slot, string][] = [['hat', 'Hatt'], ['shirt', 'Tröja'], ['shoes', 'Skor'], ['skin', 'Figur']];
 
 /** Tabs Hatt / Tröja / Skor / Figur and a 3-column tile grid. */
 export function ItemPicker() {
-  const { tab, setTab, avatar, inventory, pickItem } = useGame();
+  const { tab, setTab, avatar, inventory, pickItem } = useGame(useShallow((s) => ({ tab: s.tab, setTab: s.setTab, avatar: s.avatar, inventory: s.inventory, pickItem: s.pickItem })));
   return (
     <div className={s.sheet}>
       <SegmentedControl options={TABS} value={tab} onChange={setTab} />

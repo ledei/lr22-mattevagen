@@ -9,9 +9,9 @@
 .body { font-family: var(--font-body); }
 
 .orange { background: var(--orange); color: var(--white); --shade: var(--orange-d); }
-.green { background: oklch(0.72 0.16 145); color: var(--white); --shade: oklch(0.56 0.14 145); padding-top: 3px; }
+.green { background: var(--green); color: var(--white); --shade: var(--green-d); padding-top: 3px; }
 .white { background: var(--white); color: var(--ink); --shade: oklch(0.8 0.03 240); }
-.red { background: oklch(0.66 0.18 28); color: var(--white); --shade: oklch(0.54 0.17 28); }
-.blue { background: oklch(0.62 0.14 250); color: var(--white); --shade: oklch(0.5 0.13 250); }
+.red { background: var(--pat-red); color: var(--white); --shade: oklch(0.54 0.17 28); }
+.blue { background: var(--pat-blue); color: var(--white); --shade: oklch(0.5 0.13 250); }
 .key { background: var(--white); color: var(--ink); --shade: oklch(0.86 0.02 260); padding: 3px 0 0; }
 .keyMuted { background: oklch(0.93 0.01 260); color: var(--ink); --shade: oklch(0.84 0.02 260); }

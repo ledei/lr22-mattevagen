@@ -4,6 +4,7 @@ import type { Board } from '@/data/types';
 import { useOnChange } from '@/hooks/useOnChange';
 import { messageIn, shake } from '@/lib/motion';
 import { currentLevel, currentStep, useGame } from '@/store/gameStore';
+import { useShallow } from 'zustand/react/shallow';
 import { ChartBoard, NumberLineBoard, PatternBoard, ShapesBoard, ShareBoard, TenFrameBoard } from '../boards';
 import s from './LevelPanels.module.css';
 
@@ -11,7 +12,7 @@ const BOARDS: Record<Board, () => React.JSX.Element> = { frame: TenFrameBoard, p
 
 /** Phase 2: the generic step engine – step dots, help, board, message, and the number pad for `type` steps. */
 export function WorkPanel() {
-  const st = useGame();
+  const st = useGame(useShallow((s) => ({ askHelp: s.askHelp, del: s.del, fb: s.fb, input: s.input, locked: s.locked, lv: s.lv, msg: s.msg, msgKind: s.msgKind, press: s.press, si: s.si, stepWrong: s.stepWrong, submit: s.submit })));
   const L = currentLevel(st);
   const step = currentStep(st);
   const BoardView = BOARDS[L.board];
@@ -25,6 +26,10 @@ export function WorkPanel() {
 
   return (
     <>
+      {/* Always mounted so screen readers announce every new hint or success message. */}
+      <div className="sr-only" role="status" aria-live="polite">
+        {st.msg}
+      </div>
       <StepProgress dots={dots} onHelp={st.askHelp} />
       <div className={s.stepHead}>
         <h2 className={s.stepTitle}>{step.title}</h2>

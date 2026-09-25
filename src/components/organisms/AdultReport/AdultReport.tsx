@@ -3,11 +3,12 @@ import { AdultLevelCard, CoverageRow } from '@/components/molecules';
 import { AREAS, areaOf, bulletText } from '@/data/curriculum';
 import { LV, getLevel } from '@/data/levels';
 import { useGame } from '@/store/gameStore';
+import { useShallow } from 'zustand/react/shallow';
 import s from './AdultReport.module.css';
 
 /** "För vuxna": how much help the child needed, curriculum coverage and reading tips. Never shown as points to the child. */
 export function AdultReport() {
-  const { support, autoSupport, supportFrom, done, log } = useGame();
+  const { support, autoSupport, supportFrom, done, log } = useGame(useShallow((s) => ({ support: s.support, autoSupport: s.autoSupport, supportFrom: s.supportFrom, done: s.done, log: s.log })));
   const supportNote =
     support === 'Av' ? 'Extra stöd är avstängt.'
     : support === 'Alltid på' ? 'Extra stöd är alltid på: siffror och markeringar visas direkt.'

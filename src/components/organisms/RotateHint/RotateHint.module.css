@@ -1,0 +1,7 @@
+.overlay { position: absolute; inset: 0; z-index: 50; background: var(--grass); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; padding: 16px; text-align: center; font-family: var(--font-body); color: var(--ink); }
+.row { display: flex; align-items: flex-end; gap: 28px; }
+.phone { position: relative; width: 58px; height: 96px; border-radius: 14px; border: 5px solid var(--ink); background: var(--white); box-shadow: 0 5px 0 oklch(0 0 0 / 0.12); animation: mv-turn 2.4s var(--ease-walk) infinite; }
+.notch { position: absolute; left: 50%; top: 6px; width: 16px; height: 5px; margin-left: -8px; border-radius: 999px; background: var(--ink); }
+.title { margin: 8px 0 0; font-family: var(--font-display); font-weight: 800; font-size: 30px; line-height: 1; }
+.text { margin: 0; font-size: 17px; font-weight: 700; }
+@keyframes mv-turn { 0%, 20% { transform: rotate(-90deg) } 55%, 100% { transform: rotate(0deg) } }

@@ -7,7 +7,7 @@ import s from './LevelPanels.module.css';
 export function DonePanel({ level, onFinish }: { level: Level; onFinish: () => void }) {
   return (
     <>
-      <h1 className={s.finale}>{level.finale}</h1>
+      <h2 className={s.finale}>{level.finale}</h2>
       <RecapList steps={level.steps.map((x) => ({ title: x.title, done: x.done }))} />
       <div className={s.recap}>{level.recap}</div>
       <ChunkyButton style={{ marginTop: 'auto', flexShrink: 0 }} onClick={onFinish}>

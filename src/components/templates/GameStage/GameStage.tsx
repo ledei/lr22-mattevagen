@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useRef, type ReactNode } from 'react';
 import { ConfettiBurst } from '@/components/atoms';
 import { useElementSize } from '@/hooks/useElementSize';
+import { useMediaQuery } from '@/hooks/useMediaQuery';
 import { LayoutContext } from '@/hooks/useLayout';
 import { useOnChange } from '@/hooks/useOnChange';
 import { computeLayout, type LayoutMode } from '@/lib/layout';
@@ -15,17 +16,20 @@ export interface GameStageProps {
   children: ReactNode;
   /** bottom menu, rendered above the page */
   nav?: ReactNode;
+  /** covers everything when a phone is held sideways */
+  rotateHint?: ReactNode;
 }
 
 /**
  * Root template: a safe-area-inset fixed root, measured and drawn as a logical canvas
  * scaled to fill the window exactly. Hosts the page, the confetti layer and the bottom menu.
  */
-export function GameStage({ layoutMode = 'Automatisk', children, nav }: GameStageProps) {
+export function GameStage({ layoutMode = 'Automatisk', children, nav, rotateHint }: GameStageProps) {
   const rootRef = useRef<HTMLDivElement>(null);
-  const contentRef = useRef<HTMLDivElement>(null);
+  const contentRef = useRef<HTMLElement>(null);
   const { w, h } = useElementSize(rootRef);
-  const layout = useMemo(() => computeLayout(w, h, layoutMode), [w, h, layoutMode]);
+  const coarse = useMediaQuery('(pointer: coarse)');
+  const layout = useMemo(() => computeLayout(w, h, layoutMode, coarse), [w, h, layoutMode, coarse]);
   const screen = useGame((st) => st.screen);
   const burst = useGame((st) => st.burst);
   const bg = SCREEN_BG[screen];
@@ -57,15 +61,17 @@ export function GameStage({ layoutMode = 'Automatisk', children, nav }: GameStag
       <div ref={rootRef} className={s.root} style={{ background: bg }}>
         <div
           className={s.stage}
+          inert={layout.rotate}
          
           style={{ left: layout.stageLeft, top: layout.stageTop, width: layout.LW, height: layout.LH, transform: `scale(${layout.sc})`, background: bg }}
         >
-          <div ref={contentRef} className={s.content}>
+          <main ref={contentRef} className={s.content}>
             {children}
-          </div>
+          </main>
           <div className={s.confetti}>{burst && <ConfettiBurst key={burst.id} big={burst.big} />}</div>
           {nav}
         </div>
+        {layout.rotate && rotateHint}
       </div>
     </LayoutContext.Provider>
   );

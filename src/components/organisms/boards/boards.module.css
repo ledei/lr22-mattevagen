@@ -1,10 +1,10 @@
 /* frame */
 .frame { align-self: center; display: grid; grid-template-columns: repeat(5, 54px); gap: 6px; padding: 8px; border-radius: 18px; background: oklch(0.9 0.05 75); box-shadow: 0 4px 0 oklch(0.8 0.06 70); }
-.cell { width: 54px; height: 54px; border-radius: 12px; border: 3px solid; background: oklch(0.99 0.01 90); display: flex; align-items: center; justify-content: center; padding: 0; }
+.cell { width: 54px; height: 54px; border-radius: 12px; border: 3px solid; background: var(--paper-bright); display: flex; align-items: center; justify-content: center; padding: 0; }
 .cellInner { width: 38px; height: 38px; transition: transform .2s, background .2s, opacity .3s; display: flex; align-items: center; justify-content: center; padding-top: 3px; color: var(--white); font-family: var(--font-display); font-weight: 800; font-size: 20px; }
 
 /* pattern */
-.pattern { align-self: center; display: flex; gap: 10px; padding: 12px; border-radius: 18px; background: oklch(0.78 0.1 225); }
+.pattern { align-self: center; display: flex; gap: 10px; padding: 12px; border-radius: 18px; background: var(--pond); }
 .patGroup { display: flex; flex-direction: column; align-items: center; gap: 6px; }
 .patPlanks { display: flex; gap: 4px; }
 .patPlank { width: 30px; height: 66px; border-radius: 6px; transition: background .25s; }
@@ -17,23 +17,27 @@
 .arc { position: absolute; top: 50px; width: 32px; height: 30px; border: 3px solid; border-bottom: none; border-radius: 16px 16px 0 0; }
 .arcNum { position: absolute; left: 50%; top: -11px; transform: translateX(-50%); width: 18px; height: 18px; border-radius: 50%; color: var(--white); font-size: 11px; font-weight: 800; display: flex; align-items: center; justify-content: center; }
 .stone { position: absolute; top: 84px; width: 30px; height: 30px; border-radius: 50%; border: 3px solid; font-family: var(--font-display); font-weight: 800; font-size: 15px; padding: 2px 0 0; display: flex; align-items: center; justify-content: center; }
-/* Larger invisible hit target: full spacing width (32px) and 52px tall. */
-.stone::before { content: ''; position: absolute; left: -1px; right: -1px; top: -14px; bottom: -8px; }
+/* Invisible 44×52 hit area. It overlaps the neighbours; the valid target stone sits on top. */
+.stone::before { content: ''; position: absolute; left: -7px; right: -7px; top: -14px; bottom: -8px; }
+.stoneTarget { z-index: 2; }
 .token { position: absolute; top: 0; transition: left .3s cubic-bezier(.3, 1.4, .5, 1); }
 .hopDots { align-self: center; display: flex; gap: 6px; }
 .hopDot { width: 22px; height: 22px; border-radius: 50%; border: 3px solid; transition: background .2s; }
 
 /* share */
 .share { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
-.basketCol { display: flex; flex-direction: column; align-items: center; gap: 6px; }
+.basketCol { position: relative; display: flex; flex-direction: column; align-items: center; gap: 6px; }
+.basketBtn { width: 100%; display: flex; flex-direction: column; align-items: center; gap: 6px; padding: 0; border: none; background: none; color: inherit; font: inherit; }
+.returnBtn { position: absolute; top: 30px; right: -6px; width: 32px; height: 32px; border-radius: 50%; border: 3px solid oklch(0.68 0.09 60); background: var(--white); color: var(--ink); font-family: var(--font-display); font-weight: 800; font-size: 22px; line-height: 1; padding: 0 0 2px; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 3px 0 oklch(0 0 0 / 0.12); z-index: 1; }
+.returnBtn:active { transform: translateY(3px); box-shadow: none; }
 .friendHead { width: 32px; height: 32px; border-radius: 50%; }
 .basket { width: 100%; min-height: 84px; border-radius: 14px 14px 22px 22px; background: oklch(0.82 0.08 70); border: 3px solid; padding: 8px; display: flex; flex-wrap: wrap; gap: 4px; align-content: flex-start; justify-content: center; }
-.basketApple { width: 20px; height: 20px; border-radius: 50%; background: oklch(0.62 0.2 25); box-shadow: inset -3px -3px 0 oklch(0 0 0 / 0.15); }
+.basketApple { display: block; width: 20px; height: 20px; border-radius: 50%; background: var(--apple); box-shadow: inset -3px -3px 0 oklch(0 0 0 / 0.15); }
 .basketCount { height: 22px; font-family: var(--font-display); font-weight: 800; font-size: 20px; }
-.pile { display: flex; align-items: center; gap: 10px; padding: 10px 14px; border-radius: 16px; background: oklch(0.93 0.05 145); }
+.pile { display: flex; align-items: center; gap: 10px; padding: 10px 14px; border-radius: 16px; background: var(--chip-green-bg); }
 .pileLabel { font-weight: 800; font-size: 14px; white-space: nowrap; }
 .pileDots { display: flex; flex-wrap: wrap; gap: 4px; }
-.pileDot { width: 16px; height: 16px; border-radius: 50%; background: oklch(0.62 0.2 25); }
+.pileDot { width: 16px; height: 16px; border-radius: 50%; background: var(--apple); }
 
 /* shapes */
 .shapes { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
@@ -43,8 +47,8 @@
 /* chart */
 .birdRow { display: flex; justify-content: space-between; padding: 10px 12px; border-radius: 16px; background: oklch(0.9 0.05 225); }
 .bird { position: relative; width: 30px; height: 30px; border-radius: 50% 50% 45% 45%; border: none; transition: opacity .25s, transform .25s; cursor: pointer; padding: 0; }
-/* Larger invisible hit target (≥ 44px tall). */
-.bird::before { content: ''; position: absolute; inset: -8px -4px; }
+/* Invisible 44×46 hit area. Overlap is harmless: every bird is a valid tap. */
+.bird::before { content: ''; position: absolute; inset: -8px -7px; }
 .birdEye { position: absolute; left: 17px; top: 8px; width: 6px; height: 6px; border-radius: 50%; background: oklch(0.25 0.04 260); }
 .birdBeak { position: absolute; left: 27px; top: 12px; width: 8px; height: 6px; background: oklch(0.78 0.15 65); clip-path: polygon(0 0, 100% 50%, 0 100%); }
 .chart { align-self: center; display: flex; gap: 20px; align-items: flex-end; padding: 12px 18px 10px; border-radius: 18px; background: var(--white); box-shadow: var(--card-shadow); }

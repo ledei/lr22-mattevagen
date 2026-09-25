@@ -14,7 +14,7 @@ export function SegmentedControl<K extends string>({ options, value, onChange, v
       {options.map(([k, label]) => {
         const on = k === value;
         return (
-          <button key={k} type="button" role="tab" aria-selected={on} className={s.tab} onClick={() => onChange(k)} style={{ background: on ? 'var(--white)' : 'transparent', color: on ? 'var(--ink)' : 'var(--ink-soft)' }}>
+          <button key={k} type="button" role="tab" aria-selected={on} className={`${s.tab} touch-44`} onClick={() => onChange(k)} style={{ background: on ? 'var(--white)' : 'transparent', color: on ? 'var(--ink)' : 'var(--ink-soft)' }}>
             {label}
           </button>
         );

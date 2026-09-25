@@ -1,11 +1,12 @@
 import { currentLevel, currentStep, showNums, useGame } from '@/store/gameStore';
+import { useShallow } from 'zustand/react/shallow';
 import { C } from '@/styles/colors';
 import { pop } from '@/lib/motion';
 import s from './boards.module.css';
 
 /** Ten-frame: `count`, `fill` and `remove` steps (Muren, Trollets gåta). */
 export function TenFrameBoard() {
-  const st = useGame();
+  const st = useGame(useShallow((s) => ({ added: s.added, countOrder: s.countOrder, gone: s.gone, locked: s.locked, lv: s.lv, phase: s.phase, si: s.si, tapCell: s.tapCell })));
   const L = currentLevel(st);
   const step = currentStep(st);
   const nums = useGame(showNums);
@@ -42,6 +43,8 @@ export function TenFrameBoard() {
                 border: isF ? 'none' : '2px dashed oklch(0.85 0.03 80)',
                 transform: gone ? 'scale(0.6)' : t === 'count' && ci >= 0 ? 'scale(1.08)' : 'none',
                 boxShadow: isF ? 'inset -3px -3px 0 oklch(0 0 0 / 0.14)' : 'none',
+                // light pieces (yellow stone, green apple) carry ink numbers for contrast
+                color: isF && !have && (L.newC === 'yellow' || L.newC === 'gApple') ? C.ink : C.white,
               }}
             >
               {label}

@@ -1,11 +1,12 @@
 import { Chip, ChunkyButton, Eyebrow } from '@/components/atoms';
 import { LEVEL_COUNT, LV } from '@/data/levels';
 import { useGame } from '@/store/gameStore';
+import { useShallow } from 'zustand/react/shallow';
 import s from './NextLevelCard.module.css';
 
 /** Desktop: "Nästa bana" card right of the map. */
 export function NextLevelCard({ left, top }: { left: number; top: number }) {
-  const { unlocked, done, openLevel } = useGame();
+  const { unlocked, done, openLevel } = useGame(useShallow((s) => ({ unlocked: s.unlocked, done: s.done, openLevel: s.openLevel })));
   const nx = LV[Math.min(unlocked, LEVEL_COUNT) - 1];
   const doneCount = Object.keys(done).length;
   return (

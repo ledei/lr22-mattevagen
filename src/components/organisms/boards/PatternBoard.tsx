@@ -2,12 +2,13 @@ import { ChunkyButton } from '@/components/atoms';
 import { PAT_LENGTH } from '@/data/levels';
 import { pop } from '@/lib/motion';
 import { currentStep, showNums, useGame } from '@/store/gameStore';
+import { useShallow } from 'zustand/react/shallow';
 import { C } from '@/styles/colors';
 import s from './boards.module.css';
 
 /** The bridge pattern R-B-B, grouped in three "del". */
 export function PatternBoard() {
-  const st = useGame();
+  const st = useGame(useShallow((s) => ({ locked: s.locked, lv: s.lv, pat: s.pat, pickColor: s.pickColor, si: s.si })));
   const t = currentStep(st).t;
   const nums = useGame(showNums);
   const showGroups = (st.si === 1 && nums) || st.si === 2 || (st.si === 1 && st.locked);
