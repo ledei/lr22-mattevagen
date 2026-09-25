@@ -9,9 +9,13 @@ export function CoverageRow({ name, levels, done, total }: { name: string; level
         <div className={s.name}>{name}</div>
         <div className={s.levels}>{levels}</div>
       </div>
-      <Chip tone={done === total ? 'green' : 'neutral'}>
-        {done}/{total}
-      </Chip>
+      {total === 0 ? (
+        <Chip tone="neutral">Värld 2</Chip>
+      ) : (
+        <Chip tone={done === total ? 'green' : 'neutral'}>
+          {done}/{total}
+        </Chip>
+      )}
     </div>
   );
 }

@@ -1,5 +1,6 @@
 .head { display: flex; align-items: center; gap: 8px; }
 .title { font-weight: 800; font-size: 16px; }
 .spacer { flex: 1; }
-.lgr { font-size: 13px; font-weight: 700; color: var(--ink-soft); }
+.lgr { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 4px; font-size: 13px; font-weight: 700; color: var(--ink-soft); text-wrap: pretty; }
+.area { font-weight: 800; }
 .tip { font-size: 14px; font-weight: 700; padding: 8px 10px; border-radius: 12px; background: oklch(0.96 0.03 60); text-wrap: pretty; }

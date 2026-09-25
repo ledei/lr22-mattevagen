@@ -5,6 +5,7 @@ export type Area =
   | 'Algebra'
   | 'Geometri'
   | 'Sannolikhet och statistik'
+  | 'Samband och förändring'
   | 'Problemlösning';
 
 export type Board = 'frame' | 'pattern' | 'shapes' | 'line' | 'share' | 'chart';
@@ -60,7 +61,8 @@ export interface Level {
   finale: string;
   recap: string;
   again: string;
-  lgr: string;
+  /** ids in `CENTRALT_INNEHALL` (Lgr22, åk 1–3) that the level trains */
+  centralt: string[];
   tip: string;
 }
 

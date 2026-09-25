@@ -2,7 +2,13 @@ import { Card, Chip } from '@/components/atoms';
 import s from './AdultLevelCard.module.css';
 
 /** help === null → not played. 0 → on their own. 1–2 → a little support. ≥ 3 → needs more support (+ tip). */
-export function AdultLevelCard({ title, lgr, help, tip }: { title: string; lgr: string; help: number | null; tip: string }) {
+export interface CurriculumRef {
+  area: string;
+  /** verbatim Lgr22 centralt innehåll */
+  text: string;
+}
+
+export function AdultLevelCard({ title, centralt, help, tip }: { title: string; centralt: CurriculumRef[]; help: number | null; tip: string }) {
   const [label, tone] =
     help === null ? ['Inte spelad', 'neutral'] as const
     : help === 0 ? ['Klarade själv', 'green'] as const
@@ -15,7 +21,13 @@ export function AdultLevelCard({ title, lgr, help, tip }: { title: string; lgr: 
         <div className={s.spacer} />
         <Chip tone={tone}>{label}</Chip>
       </div>
-      <div className={s.lgr}>{lgr}</div>
+      <ul className={s.lgr}>
+        {centralt.map((c) => (
+          <li key={c.text}>
+            <span className={s.area}>{c.area}:</span> ”{c.text}”
+          </li>
+        ))}
+      </ul>
       {help !== null && help >= 3 && <div className={s.tip}>{tip}</div>}
     </Card>
   );

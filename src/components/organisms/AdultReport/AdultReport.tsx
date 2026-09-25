@@ -1,6 +1,7 @@
 import { Card } from '@/components/atoms';
 import { AdultLevelCard, CoverageRow } from '@/components/molecules';
-import { AREAS, LV, getLevel } from '@/data/levels';
+import { AREAS, areaOf, bulletText } from '@/data/curriculum';
+import { LV, getLevel } from '@/data/levels';
 import { useGame } from '@/store/gameStore';
 import s from './AdultReport.module.css';
 
@@ -23,15 +24,15 @@ export function AdultReport() {
       <Card>
         <div className={s.coverageHead}>
           <div className={s.cardTitle}>Centralt innehåll, åk 1–3</div>
-          <div className={s.small}>Skolverkets kursplan i matematik. Varje område har minst en bana i världen.</div>
+          <div className={s.small}>Lgr22, kursplan i matematik. Banorna kopplas till punkter i det centrala innehållet för årskurs 1–3.</div>
         </div>
         {AREAS.map((a) => {
-          const ls = LV.filter((x) => x.area === a);
-          return <CoverageRow key={a} name={a} levels={ls.map((x) => x.name).join(' · ')} done={ls.filter((x) => done[x.id]).length} total={ls.length} />;
+          const ls = LV.filter((x) => x.centralt.some((id) => areaOf(id) === a));
+          return <CoverageRow key={a} name={a} levels={ls.length ? ls.map((x) => x.name).join(' · ') : 'Ingen bana i Värld 1'} done={ls.filter((x) => done[x.id]).length} total={ls.length} />;
         })}
       </Card>
       {LV.map((x) => (
-        <AdultLevelCard key={x.id} title={`${x.name} · ${x.skill}`} lgr={x.lgr} tip={x.tip} help={log[x.id] ? log[x.id].help : null} />
+        <AdultLevelCard key={x.id} title={`${x.name} · ${x.skill}`} centralt={x.centralt.map((id) => ({ area: areaOf(id), text: bulletText(id) }))} tip={x.tip} help={log[x.id] ? log[x.id].help : null} />
       ))}
       <Card gap={8}>
         <div className={s.cardTitle}>Läs mer</div>
