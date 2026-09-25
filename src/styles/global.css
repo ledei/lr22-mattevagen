@@ -1,0 +1,32 @@
+@import './tokens.css';
+@import './animations.css';
+
+html,
+body {
+  margin: 0;
+  height: 100%;
+  overflow: hidden;
+  overscroll-behavior: none;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  background: var(--grass);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+a {
+  color: oklch(0.5 0.15 245);
+}
+a:hover {
+  color: oklch(0.4 0.15 245);
+}
+
+button {
+  font-family: inherit;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+  -webkit-user-select: none;
+}

@@ -1,0 +1,4 @@
+.stage { position: relative; height: 250px; display: flex; align-items: flex-end; justify-content: center; padding-bottom: 22px; flex-shrink: 0; }
+.halo { position: absolute; left: 50%; top: 20px; width: 210px; height: 210px; transform: translateX(-50%); border-radius: 50%; background: oklch(0.93 0.05 230); }
+.podium { position: absolute; left: 50%; bottom: 14px; width: 170px; height: 34px; transform: translateX(-50%); border-radius: 50%; background: oklch(0.72 0.13 240); }
+.fig { position: relative; animation: mv-bob 2.4s ease-in-out infinite; }

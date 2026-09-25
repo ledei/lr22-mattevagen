@@ -1,0 +1,2 @@
+.screen { position: absolute; inset: 0; background: var(--grass); overflow: hidden; }
+.mapFrame { position: absolute; transform-origin: 50% 0; }

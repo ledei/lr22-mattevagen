@@ -1,0 +1,2 @@
+.pill { position: absolute; transform: translateX(-50%); white-space: nowrap; border: none; padding: 6px 14px; border-radius: 999px; background: var(--ink); color: var(--white); font-size: 13px; font-weight: 800; cursor: pointer; display: flex; gap: 6px; align-items: center; z-index: 3; }
+.play { color: var(--gold); }

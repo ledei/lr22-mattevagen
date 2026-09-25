@@ -1,0 +1,2 @@
+.bar { position: absolute; left: 0; right: 0; top: 0; height: 72px; display: flex; align-items: center; gap: 8px; z-index: 5; background: var(--grass); }
+.spacer { flex: 1; }

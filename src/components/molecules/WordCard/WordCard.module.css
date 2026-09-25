@@ -1,0 +1,10 @@
+.card { border-radius: 20px; padding: 14px 16px; animation: mv-rise .45s var(--ease-out-soft) both; display: flex; flex-direction: column; gap: 4px; }
+.open { background: var(--white); box-shadow: var(--card-shadow); border: none; }
+.locked { background: oklch(0.95 0.01 260); box-shadow: none; border: 2px dashed oklch(0.86 0.01 260); }
+.head { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.word { font-family: var(--font-display); font-weight: 800; font-size: 24px; line-height: 1; }
+.open .word { color: var(--ink); }
+.locked .word { color: oklch(0.65 0.02 260); }
+.from { font-size: 12px; font-weight: 800; color: oklch(0.55 0.03 260); }
+.def { font-size: 15px; font-weight: 700; }
+.ex { align-self: flex-start; margin-top: 2px; padding: 3px 10px; border-radius: 10px; background: oklch(0.94 0.04 250); font-family: var(--font-display); font-weight: 800; font-size: 17px; }

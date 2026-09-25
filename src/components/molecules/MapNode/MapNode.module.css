@@ -1,0 +1,7 @@
+.wrap { position: absolute; animation: mv-popin .5s var(--ease-pop) both; }
+.halo { position: absolute; inset: -11px; border-radius: 50%; background: oklch(1 0 0 / 0.45); }
+.pulse { position: absolute; inset: -4px; border-radius: 50%; border: 4px solid var(--white); animation: mv-pulse 1.6s ease-out infinite; pointer-events: none; }
+.node { position: absolute; inset: 0; border: 4px solid var(--white); border-radius: 50%; color: var(--white); font-family: var(--font-display); font-weight: 800; font-size: 28px; display: flex; align-items: center; justify-content: center; padding: 4px 0 0; line-height: 1; }
+.node:hover { transform: translateY(-3px); }
+.node:active { transform: translateY(4px); box-shadow: none !important; }
+.tag { position: absolute; left: 50%; top: 100%; transform: translate(-50%, 8px); white-space: nowrap; padding: 2px 8px; border-radius: 999px; background: oklch(1 0 0 / 0.75); font-size: 11px; font-weight: 800; }

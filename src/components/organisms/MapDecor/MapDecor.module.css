@@ -1,0 +1,2 @@
+.layer { position: absolute; inset: -40px; transition: transform .3s ease-out; pointer-events: none; }
+.hill { position: absolute; border-radius: 50%; background: var(--grass-light); }

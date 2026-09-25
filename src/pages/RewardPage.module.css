@@ -1,0 +1,4 @@
+.bgCircle { position: absolute; left: -120px; top: -140px; width: 630px; height: 630px; border-radius: 50%; background: oklch(0.9 0.06 230); }
+.ring { position: absolute; left: 50%; top: 40px; width: 560px; height: 560px; margin-left: -280px; border-radius: 50%; border: 36px dotted oklch(1 0 0 / 0.4); animation: mv-spin 40s linear infinite; pointer-events: none; }
+.title { position: relative; margin: 0; text-align: center; font-family: var(--font-display); font-weight: 800; font-size: 38px; line-height: 1; }
+.actions { position: relative; margin-top: auto; display: flex; flex-direction: column; gap: 12px; }

@@ -1,0 +1,17 @@
+.btn {
+  border: none;
+  font-family: var(--font-display);
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 var(--depth) 0 var(--shade);
+}
+.btn:active { transform: translateY(var(--press)); box-shadow: none; }
+.body { font-family: var(--font-body); }
+
+.orange { background: var(--orange); color: var(--white); --shade: var(--orange-d); }
+.green { background: oklch(0.72 0.16 145); color: var(--white); --shade: oklch(0.56 0.14 145); padding-top: 3px; }
+.white { background: var(--white); color: var(--ink); --shade: oklch(0.8 0.03 240); }
+.red { background: oklch(0.66 0.18 28); color: var(--white); --shade: oklch(0.54 0.17 28); }
+.blue { background: oklch(0.62 0.14 250); color: var(--white); --shade: oklch(0.5 0.13 250); }
+.key { background: var(--white); color: var(--ink); --shade: oklch(0.86 0.02 260); padding: 3px 0 0; }
+.keyMuted { background: oklch(0.93 0.01 260); color: var(--ink); --shade: oklch(0.84 0.02 260); }

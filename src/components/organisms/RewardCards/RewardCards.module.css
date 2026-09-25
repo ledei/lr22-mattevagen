@@ -1,0 +1,12 @@
+.word { position: relative; background: var(--white); border-radius: 26px; padding: 20px; display: flex; flex-direction: column; gap: 8px; box-shadow: 0 6px 0 oklch(0.78 0.05 230); transition: transform .5s var(--ease-pop); }
+.w { font-family: var(--font-display); font-weight: 800; font-size: 36px; line-height: 1; }
+.d { font-size: 17px; font-weight: 700; text-wrap: pretty; }
+.ex { align-self: flex-start; padding: 6px 14px; border-radius: 12px; background: oklch(0.94 0.04 250); font-family: var(--font-display); font-weight: 800; font-size: 20px; }
+
+.item { position: relative; background: var(--white); border-radius: 22px; padding: 12px 16px; display: flex; align-items: center; gap: 14px; box-shadow: 0 6px 0 oklch(0.78 0.05 230); }
+.fig { width: 80px; height: 100px; border-radius: 16px; background: oklch(0.95 0.05 85); animation: mv-float 2.4s ease-in-out infinite; display: flex; align-items: flex-end; justify-content: center; padding-bottom: 2px; flex-shrink: 0; }
+.itemText { display: flex; flex-direction: column; gap: 2px; }
+.itemName { font-family: var(--font-display); font-weight: 800; font-size: 24px; line-height: 1; }
+
+.again { position: relative; padding: 12px 14px; border-radius: 18px; background: oklch(0.3 0.04 260 / 0.08); font-size: 14px; font-weight: 700; text-wrap: pretty; }
+.again strong { font-weight: 800; }

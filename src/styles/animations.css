@@ -1,0 +1,27 @@
+@keyframes mv-bob { 0%, 100% { transform: translateY(0) } 50% { transform: translateY(-4px) } }
+@keyframes mv-float { 0%, 100% { transform: translateY(0) } 50% { transform: translateY(-7px) } }
+@keyframes mv-sway { 0%, 100% { transform: rotate(-3deg) } 50% { transform: rotate(3deg) } }
+@keyframes mv-drift { from { transform: translateX(-180px) } to { transform: translateX(620px) } }
+@keyframes mv-pulse { 0% { transform: scale(0.9); opacity: .8 } 100% { transform: scale(1.55); opacity: 0 } }
+@keyframes mv-walk { 0%, 100% { transform: translateY(0) rotate(-3deg) } 50% { transform: translateY(-8px) rotate(3deg) } }
+@keyframes mv-dash { to { stroke-dashoffset: -34 } }
+@keyframes mv-spin { to { transform: rotate(360deg) } }
+@keyframes mv-glow { 0%, 100% { transform: scale(1); opacity: .35 } 50% { transform: scale(1.25); opacity: .15 } }
+@keyframes mv-shimmer { 0%, 100% { opacity: .3; transform: translateX(0) } 50% { opacity: .85; transform: translateX(8px) } }
+@keyframes mv-popin { from { transform: scale(0); opacity: 0 } to { transform: scale(1); opacity: 1 } }
+@keyframes mv-rise { from { transform: translateY(16px); opacity: 0 } to { transform: none; opacity: 1 } }
+@keyframes mv-confetti {
+  0% { transform: translate(0, 0) rotate(0); opacity: 1 }
+  80% { opacity: 1 }
+  100% { transform: translate(var(--dx), var(--dy)) rotate(var(--r)); opacity: 0 }
+}
+
+/* Honour reduced motion: ambient loops and confetti off, only opacity transitions remain. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition-property: opacity, background, background-color, border-color, color !important;
+  }
+}

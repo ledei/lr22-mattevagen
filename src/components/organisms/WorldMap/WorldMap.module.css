@@ -1,0 +1,17 @@
+.map { position: absolute; left: 0; top: 0; width: 390px; height: 696px; transition: transform .5s cubic-bezier(.5, 0, .7, .4), opacity .5s ease-in; }
+.hill { position: absolute; border-radius: 50%; background: var(--grass-light); }
+.path { position: absolute; left: 0; top: 0; overflow: visible; }
+.donePath { animation: mv-dash 1.1s linear infinite; }
+
+.roof, .house, .door, .tower, .towerTop, .keep, .gate, .castleLabel { position: absolute; }
+.roof { left: 168px; top: 582px; width: 64px; height: 30px; background: oklch(0.62 0.19 25); clip-path: polygon(50% 0, 100% 100%, 0 100%); }
+.house { left: 176px; top: 610px; width: 48px; height: 36px; border-radius: 0 0 6px 6px; background: oklch(0.97 0.02 80); }
+.door { left: 193px; top: 624px; width: 14px; height: 22px; border-radius: 7px 7px 0 0; background: oklch(0.55 0.08 55); }
+
+.towerTop { top: 22px; width: 24px; height: 22px; background: oklch(0.6 0.17 300); clip-path: polygon(50% 0, 100% 100%, 0 100%); }
+.tower { top: 44px; width: 24px; height: 70px; background: oklch(0.8 0.02 260); border-radius: 3px; }
+.keep { left: 246px; top: 62px; width: 60px; height: 52px; background: oklch(0.86 0.02 260); }
+.gate { left: 266px; top: 84px; width: 20px; height: 30px; border-radius: 10px 10px 0 0; background: oklch(0.45 0.05 260); }
+.castleLabel { left: 276px; top: 124px; transform: translateX(-50%); white-space: nowrap; padding: 4px 10px; border-radius: 999px; background: oklch(0.3 0.04 260 / 0.8); color: var(--white); font-size: 12px; font-weight: 800; }
+
+.avatar { position: absolute; transition: left .9s var(--ease-walk), top .9s var(--ease-walk); z-index: 4; }

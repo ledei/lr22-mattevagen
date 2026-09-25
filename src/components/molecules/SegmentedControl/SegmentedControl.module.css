@@ -1,0 +1,6 @@
+.root { display: grid; }
+.tab { border: none; font-weight: 800; cursor: pointer; white-space: nowrap; }
+.wide { gap: 6px; padding: 5px; border-radius: 16px; background: oklch(0.94 0.01 260); }
+.wide .tab { height: 38px; border-radius: 12px; font-size: 14px; }
+.compact { gap: 4px; padding: 4px; border-radius: 14px; background: oklch(0.93 0.01 260); }
+.compact .tab { height: 32px; padding: 0 12px; border-radius: 10px; font-size: 13px; }

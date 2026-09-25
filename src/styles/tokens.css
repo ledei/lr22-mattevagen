@@ -1,0 +1,46 @@
+/* Design tokens. oklch values are the source of truth (see handoff README). */
+:root {
+  --ink: oklch(0.3 0.04 260);
+  --ink-muted: oklch(0.5 0.04 260);
+  --ink-soft: oklch(0.5 0.03 260);
+  --paper: oklch(0.98 0.01 90);
+  --white: oklch(1 0 0);
+
+  --grass: oklch(0.84 0.12 140);
+  --grass-light: oklch(0.87 0.11 140);
+  --tree: oklch(0.62 0.15 145);
+  --tree-shadow: oklch(0.55 0.14 145);
+  --trunk: oklch(0.5 0.07 55);
+  --sky: oklch(0.88 0.07 225);
+  --sky-riddle: oklch(0.84 0.06 300);
+  --reward-bg: oklch(0.86 0.07 230);
+  --pond: oklch(0.78 0.1 225);
+  --pond-shadow: oklch(0.7 0.11 230);
+
+  --orange: oklch(0.74 0.16 55);
+  --orange-d: oklch(0.6 0.16 45);
+  --green: oklch(0.72 0.16 145);
+  --green-d: oklch(0.56 0.14 145);
+  --purple: oklch(0.6 0.17 300);
+  --purple-d: oklch(0.46 0.15 300);
+  --locked: oklch(0.8 0.02 150);
+  --locked-d: oklch(0.66 0.03 150);
+  --blue-chip: oklch(0.58 0.14 245);
+  --blue-chip-d: oklch(0.48 0.13 250);
+  --help-yellow: oklch(0.9 0.12 92);
+  --gold: oklch(0.84 0.16 85);
+
+  --chip-green-bg: oklch(0.93 0.05 145);
+  --chip-green-fg: oklch(0.4 0.12 145);
+  --chip-blue-bg: oklch(0.93 0.04 250);
+  --chip-blue-fg: oklch(0.42 0.12 250);
+
+  --card-shadow: 0 4px 0 oklch(0.9 0.02 90);
+
+  --font-display: 'Baloo 2', sans-serif;
+  --font-body: 'Nunito', sans-serif;
+
+  --ease-out-soft: cubic-bezier(0.2, 0.8, 0.3, 1);
+  --ease-pop: cubic-bezier(0.3, 1.6, 0.5, 1);
+  --ease-walk: cubic-bezier(0.4, 0, 0.3, 1);
+}

@@ -1,0 +1,8 @@
+.lead { margin: 0; font-size: 15px; font-weight: 700; color: var(--ink-soft); text-wrap: pretty; }
+.support { background: oklch(0.95 0.06 95); border-radius: 20px; padding: 14px 16px; display: flex; flex-direction: column; gap: 4px; }
+.supportLabel { font-size: 13px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; color: oklch(0.5 0.1 80); }
+.supportText { font-size: 15px; font-weight: 700; text-wrap: pretty; }
+.coverageHead { display: flex; flex-direction: column; gap: 2px; }
+.cardTitle { font-weight: 800; font-size: 16px; }
+.small { font-size: 13px; font-weight: 700; color: var(--ink-soft); text-wrap: pretty; }
+.link { font-size: 14px; font-weight: 800; }
