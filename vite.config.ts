@@ -3,7 +3,11 @@ import react from '@vitejs/plugin-react';
 import { defineConfig } from 'vite';
 import { VitePWA } from 'vite-plugin-pwa';
 
+// GitHub Pages serves the app from /lr22-mattevagen/; the deploy workflow sets VITE_BASE.
+const base = process.env.VITE_BASE ?? '/';
+
 export default defineConfig({
+  base,
   resolve: {
     alias: { '@': fileURLToPath(new URL('./src', import.meta.url)) },
   },
@@ -17,7 +21,8 @@ export default defineConfig({
         short_name: 'Mattevägen',
         description: 'Mattespel för 6–8 år',
         lang: 'sv',
-        start_url: '/',
+        start_url: base,
+        scope: base,
         display: 'standalone',
         orientation: 'any',
         background_color: '#A3DD93',
