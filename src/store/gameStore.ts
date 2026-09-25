@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 import { createJSONStorage, persist } from 'zustand/middleware';
-import { BIRDS, COLS, LEVEL_COUNT, PAT, PAT_LENGTH, PAT_START, REWARD, SHAPES, SHARE_PILE, getLevel } from '@/data/levels';
+import { BIRDS, COLS, LEVEL_COUNT, PAT, PAT_LENGTH, PAT_START, REWARD, SHAPES, getLevel } from '@/data/levels';
 import type { Avatar, Level, PatColor, Slot, Step, StepType } from '@/data/types';
 import { clearTimers, later } from './timers';
 
@@ -10,7 +10,7 @@ export type StartPreset = 'Ny spelare' | 'Halvvägs' | 'Allt klart';
 
 export interface Persisted {
   done: Record<number, 1>;
-  /** 1..8 (8 = world complete) */
+  /** 1..LEVEL_COUNT + 1 (LEVEL_COUNT + 1 = world complete) */
   unlocked: number;
   inventory: string[];
   avatar: Avatar;
@@ -48,7 +48,7 @@ export interface LevelRun {
   pos: number;
   hops: Hop[];
   stepHops: number;
-  baskets: [number, number, number];
+  baskets: number[];
   pile: number;
   found: number[];
   tally: [number, number, number];
@@ -111,7 +111,7 @@ export type GameState = Persisted & LevelRun & UiState & Actions;
 export const lvReset = (L?: Level): LevelRun => ({
   phase: 'intro', si: 0, input: '', stepWrong: 0, stepHelp: 0, help: 0, msg: '', msgKind: '', charX: 4, walking: false,
   locked: false, fb: false, countOrder: [], added: 0, gone: [], pat: [...PAT_START], pos: L?.start ?? 0, hops: [], stepHops: 0,
-  baskets: [0, 0, 0], pile: SHARE_PILE, found: [], tally: [0, 0, 0], sorted: [],
+  baskets: Array<number>(L?.share?.baskets ?? 3).fill(0), pile: L?.share?.pile ?? 0, found: [], tally: [0, 0, 0], sorted: [],
 });
 
 const DEFAULT_AVATAR: Avatar = { skin: 'mellan', hat: 'none', shirt: 'green', shoes: 'sneakers' };
@@ -119,7 +119,7 @@ const DEFAULT_AVATAR: Avatar = { skin: 'mellan', hat: 'none', shirt: 'green', sh
 export function presetState(start: StartPreset): Omit<Persisted, 'support'> {
   const base: Omit<Persisted, 'support'> = { done: {}, unlocked: 1, inventory: [], log: {}, autoSupport: false, supportFrom: null, avatar: { ...DEFAULT_AVATAR }, avatarNode: 1 };
   if (start === 'Halvvägs') return { ...base, done: { 1: 1, 2: 1, 3: 1 }, unlocked: 4, avatarNode: 4, inventory: ['cap', 'orange', 'purple'], log: { 1: { help: 1 }, 2: { help: 4 }, 3: { help: 0 } }, autoSupport: true, supportFrom: 2, avatar: { ...DEFAULT_AVATAR, hat: 'cap', shirt: 'purple' } };
-  if (start === 'Allt klart') return { ...base, done: { 1: 1, 2: 1, 3: 1, 4: 1, 5: 1, 6: 1, 7: 1 }, unlocked: 8, avatarNode: 8, inventory: ['cap', 'orange', 'purple', 'rocket', 'helmet', 'alien', 'crown'], log: { 1: { help: 0 }, 2: { help: 4 }, 3: { help: 0 }, 4: { help: 1 }, 5: { help: 0 }, 6: { help: 1 }, 7: { help: 3 } }, autoSupport: true, supportFrom: 2, avatar: { skin: 'mellan', hat: 'crown', shirt: 'orange', shoes: 'rocket' } };
+  if (start === 'Allt klart') return { ...base, done: { 1: 1, 2: 1, 3: 1, 4: 1, 5: 1, 6: 1, 7: 1, 8: 1 }, unlocked: 9, avatarNode: 9, inventory: ['cap', 'orange', 'purple', 'rocket', 'helmet', 'alien', 'chef', 'crown'], log: { 1: { help: 0 }, 2: { help: 4 }, 3: { help: 0 }, 4: { help: 1 }, 5: { help: 0 }, 6: { help: 1 }, 7: { help: 2 }, 8: { help: 3 } }, autoSupport: true, supportFrom: 2, avatar: { skin: 'mellan', hat: 'crown', shirt: 'orange', shoes: 'rocket' } };
   return base;
 }
 
@@ -250,19 +250,19 @@ export const useGame = create<GameState>()(
           if (!canAct('share')) return;
           const s = get();
           if (s.pile <= 0) return;
-          const b = s.baskets.map((x, j) => (j === i ? x + 1 : x)) as LevelRun['baskets'];
+          const b = s.baskets.map((x, j) => (j === i ? x + 1 : x));
           const pile = s.pile - 1;
           set({ baskets: b, pile, msg: '' });
           if (pile === 0) {
             if (b.every((x) => x === b[0])) complete();
-            else nudge('Är det rättvist? Alla ska ha lika många. Tryck på − vid en korg för att ta tillbaka ett äpple.');
+            else nudge(`Är det rättvist? Alla ska ha lika många. Tryck på − vid en korg för att ta tillbaka ${currentLevel(s).share?.item ?? 'en sak'}.`);
           }
         },
         returnApple: (i) => {
           if (!canAct('share')) return;
           const s = get();
           if (s.baskets[i] <= 0) return;
-          set({ baskets: s.baskets.map((x, j) => (j === i ? x - 1 : x)) as LevelRun['baskets'], pile: s.pile + 1, msg: '' });
+          set({ baskets: s.baskets.map((x, j) => (j === i ? x - 1 : x)), pile: s.pile + 1, msg: '' });
         },
         tapShape: (i) => {
           if (!canAct('find')) return;

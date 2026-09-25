@@ -75,6 +75,12 @@ export function Figur({ size = 100, skin = 'mellan', hat = 'none', shirt = 'gree
             <div className={s.helmetShine} />
           </>
         )}
+        {hat === 'chef' && (
+          <>
+            <div className={s.chefPuff} />
+            <div className={s.chefBand} />
+          </>
+        )}
         {hat === 'crown' && <div className={s.crown} />}
       </div>
     </div>

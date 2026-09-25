@@ -3,7 +3,7 @@ import { LV } from '@/data/levels';
 import { useGame } from '@/store/gameStore';
 import s from './WordBook.module.css';
 
-/** "Mina ord": 7 cards, locked ones show "? ? ?". */
+/** "Mina ord": one card per level, locked ones show "? ? ?". */
 export function WordBook() {
   const done = useGame((st) => st.done);
   return (

@@ -6,6 +6,7 @@ import { LayoutContext } from '@/hooks/useLayout';
 import { useOnChange } from '@/hooks/useOnChange';
 import { computeLayout, type LayoutMode } from '@/lib/layout';
 import { screenIn } from '@/lib/motion';
+import { stopSpeaking } from '@/lib/speech';
 import { useGame } from '@/store/gameStore';
 import { SCREEN_BG } from '@/styles/colors';
 import s from './GameStage.module.css';
@@ -37,7 +38,10 @@ export function GameStage({ layoutMode = 'Automatisk', children, nav, rotateHint
   useEffect(() => {
     document.body.style.background = bg;
   }, [bg]);
-  useOnChange(screen, () => screenIn(contentRef.current));
+  useOnChange(screen, () => {
+    screenIn(contentRef.current);
+    stopSpeaking();
+  });
 
   /**
    * `overflow: hidden` boxes must never scroll: focus or scrollIntoView could otherwise

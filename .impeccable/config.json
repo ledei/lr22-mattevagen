@@ -1,0 +1,14 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "bounce-easing",
+        "value": "cubic-bezier(0.3, 1.6, 0.5, 1)",
+        "createdAt": "2026-09-25T08:46:06.623Z",
+        "reason": "Specified in the design handoff README (node pop-in, cubic-bezier(.3,1.6,.5,1)) and used by the prototype for troll, friends and reward card; intentional playful motion for ages 6–8"
+      }
+    ]
+  }
+}

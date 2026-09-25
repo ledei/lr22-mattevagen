@@ -1,4 +1,5 @@
 .word { position: relative; background: var(--white); border-radius: 26px; padding: 20px; display: flex; flex-direction: column; gap: 8px; box-shadow: 0 6px 0 oklch(0.78 0.05 230); transition: transform .5s var(--ease-pop); }
+.wordRow { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
 .w { font-family: var(--font-display); font-weight: 800; font-size: 36px; line-height: 1; }
 .d { font-size: 17px; font-weight: 700; text-wrap: pretty; }
 .ex { align-self: flex-start; padding: 6px 14px; border-radius: 12px; background: oklch(0.94 0.04 250); font-family: var(--font-display); font-weight: 800; font-size: 20px; }

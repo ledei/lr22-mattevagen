@@ -1,5 +1,5 @@
 import { ItemTile, SegmentedControl } from '@/components/molecules';
-import { ITEMS } from '@/data/levels';
+import { ITEMS, getLevel } from '@/data/levels';
 import type { Slot } from '@/data/types';
 import { useGame } from '@/store/gameStore';
 import { useShallow } from 'zustand/react/shallow';
@@ -23,7 +23,7 @@ export function ItemPicker() {
               preview={{ ...avatar, [tab]: it.id }}
               selected={avatar[tab] === it.id}
               locked={locked}
-              lockText={it.lv === 7 ? 'Lös gåtan' : `Klara bana ${it.lv}`}
+              lockText={it.lv && getLevel(it.lv).riddle ? 'Lös gåtan' : `Klara bana ${it.lv}`}
               onPick={() => { if (!locked) pickItem(tab, it.id); }}
             />
           );

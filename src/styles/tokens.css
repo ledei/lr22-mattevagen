@@ -54,6 +54,8 @@
   --stone: oklch(0.64 0.02 260);
   --apple: oklch(0.62 0.2 25);
   --green-apple: oklch(0.7 0.17 135);
+  --bun: oklch(0.78 0.12 70);
+  --bun-iced: oklch(0.82 0.09 10);
   --hop-back: oklch(0.63 0.2 25);
   /* darker twins for small white numbers on pieces (≥ 4.5:1) */
   --pat-red-strong: oklch(0.56 0.18 28);
