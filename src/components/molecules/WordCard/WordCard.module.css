@@ -5,6 +5,7 @@
 .word { font-family: var(--font-display); font-weight: 800; font-size: 24px; line-height: 1; }
 .open .word { color: var(--ink); }
 .locked .word { color: var(--ink-soft); }
+.meta { display: flex; align-items: center; gap: 10px; }
 .from { font-size: 12px; font-weight: 800; color: var(--ink-faint); }
 .def { font-size: 15px; font-weight: 700; }
 .ex { align-self: flex-start; margin-top: 2px; padding: 3px 10px; border-radius: 10px; background: oklch(0.94 0.04 250); font-family: var(--font-display); font-weight: 800; font-size: 17px; }

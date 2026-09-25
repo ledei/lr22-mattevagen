@@ -17,6 +17,8 @@ export const C = {
   yellow: 'var(--piece-yellow)',
   apple: 'var(--apple)',
   gApple: 'var(--green-apple)',
+  bun: 'var(--bun)',
+  bunIced: 'var(--bun-iced)',
   R: 'var(--pat-red)',
   B: 'var(--pat-blue)',
   red: 'var(--hop-back)',

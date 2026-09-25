@@ -10,3 +10,4 @@ export { BookIcon, NavIcon } from './NavIcon/NavIcon';
 export { NumberCircle } from './NumberCircle/NumberCircle';
 export { Pond, Shimmer } from './Pond/Pond';
 export { Tree } from './Tree/Tree';
+export { SpeakButton } from './SpeakButton/SpeakButton';

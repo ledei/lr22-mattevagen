@@ -9,11 +9,13 @@ export type Area =
   | 'Problemlösning';
 
 export type Board = 'frame' | 'pattern' | 'shapes' | 'line' | 'share' | 'chart';
-export type Obstacle = 'wall' | 'river' | 'gate' | 'stones' | 'tree' | 'birds' | 'troll';
+export type Obstacle = 'wall' | 'river' | 'gate' | 'stones' | 'tree' | 'birds' | 'bakery' | 'troll';
 export type PatColor = 'R' | 'B';
 export type ShapeKind = 'tri' | 'quad' | 'circle';
 
 interface StepBase {
+  /** board shown for this step, when it differs from the level's board */
+  board?: Board;
   title: string;
   text: string;
   help: string[];
@@ -54,6 +56,8 @@ export interface Level {
   radius?: string;
   /** line board: start stone */
   start?: number;
+  /** share board: number of baskets, items to hand out, and where they start */
+  share?: { baskets: number; pile: number; pileLabel: string; /** one item, with article: 'ett äpple' */ item: string };
   riddle?: boolean;
   intro: string;
   word: MathWord;
@@ -68,7 +72,7 @@ export interface Level {
 
 export type Slot = 'hat' | 'shirt' | 'shoes' | 'skin';
 export type Skin = 'ljus' | 'mellan' | 'mork' | 'alien' | 'robot';
-export type Hat = 'none' | 'cap' | 'helmet' | 'crown';
+export type Hat = 'none' | 'cap' | 'helmet' | 'chef' | 'crown';
 export type Shirt = 'green' | 'blue' | 'purple' | 'orange';
 export type Shoes = 'sneakers' | 'rocket';
 

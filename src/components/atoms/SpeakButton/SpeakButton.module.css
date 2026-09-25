@@ -1,0 +1,6 @@
+.btn { flex-shrink: 0; border: none; border-radius: 50%; background: var(--white); color: var(--ink); display: flex; align-items: center; justify-content: center; padding: 0; cursor: pointer; box-shadow: 0 3px 0 oklch(0.86 0.02 260); }
+.btn:active { transform: translateY(3px); box-shadow: none; }
+.on { background: var(--chip-blue-bg); color: var(--chip-blue-fg); box-shadow: 0 3px 0 oklch(0.82 0.05 250); }
+.on .wave1, .on .wave2 { animation: speak-wave 0.9s ease-in-out infinite; }
+.on .wave2 { animation-delay: 0.15s; }
+@keyframes speak-wave { 0%, 100% { opacity: 1 } 50% { opacity: 0.25 } }

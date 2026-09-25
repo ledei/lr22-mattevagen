@@ -2,6 +2,7 @@
 .title { margin: 0; font-family: var(--font-display); font-weight: 800; font-size: 34px; line-height: 1; }
 .intro { margin: 0; font-size: 18px; font-weight: 700; text-wrap: pretty; line-height: 1.4; }
 
+.titleRow { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; }
 .stepHead { display: flex; flex-direction: column; gap: 3px; }
 .stepTitle { margin: 0; font-family: var(--font-display); font-weight: 800; font-size: 26px; line-height: 1; }
 .stepText { margin: 0; font-size: 16px; font-weight: 700; text-wrap: pretty; line-height: 1.35; }

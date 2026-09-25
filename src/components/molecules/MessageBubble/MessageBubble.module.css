@@ -1,3 +1,4 @@
-.msg { padding: 10px 14px; border-radius: 16px; font-weight: 800; font-size: 15px; text-wrap: pretty; }
+.msg { display: flex; align-items: center; gap: 10px; padding: 10px 14px; border-radius: 16px; font-weight: 800; font-size: 15px; text-wrap: pretty; }
 .help { background: var(--hint-bg); color: var(--hint-fg); }
 .ok { background: var(--success-bg); color: var(--success-fg); }
+.text { flex: 1; min-width: 0; }

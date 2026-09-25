@@ -3,7 +3,11 @@ import type { LevelRun } from '@/store/gameStore';
 import { C } from '@/styles/colors';
 import s from './LevelScene.module.css';
 
-type Run = Pick<LevelRun, 'added' | 'gone' | 'pat' | 'pile' | 'found' | 'sorted' | 'phase'> & { base: number };
+type Run = Pick<LevelRun, 'added' | 'gone' | 'pat' | 'pile' | 'found' | 'sorted' | 'phase'> & {
+  base: number;
+  /** the level's share step has started (buns leave the counter) */
+  shareStarted: boolean;
+};
 
 /** Muren – bricks fill in as the ten-frame fills. */
 export function Wall({ base, added }: Run) {
@@ -58,6 +62,34 @@ export function AppleTree({ pile, phase }: Run) {
       </div>
       <div className={s.friends} style={{ transform: phase === 'done' ? 'translateY(-14px)' : 'none' }}>
         {FRIENDS.map((f, fi) => (
+          <div key={fi} className={s.friend} style={{ animationDelay: `${fi * -0.45}s` }}>
+            <div className={s.friendHead} style={{ background: f.head }} />
+            <div className={s.friendBody} style={{ background: f.shirt }} />
+          </div>
+        ))}
+      </div>
+    </>
+  );
+}
+
+/** Bageriet – buns on the counter double, then go to the two customers. */
+export function Bakery({ base, added, pile, shareStarted, phase }: Run) {
+  const onCounter = shareStarted ? pile : base + added;
+  return (
+    <>
+      <div className={s.shopWall} />
+      <div className={s.shopDoor} />
+      <div className={s.awning} />
+      <div className={s.shopSign}>Bageri</div>
+      <div className={s.counter} />
+      <div className={s.counterTop} />
+      <div className={s.counterBuns}>
+        {Array.from({ length: onCounter }, (_, i) => (
+          <div key={i} className={s.sceneBun} style={{ background: i < base ? C.bun : C.bunIced }} />
+        ))}
+      </div>
+      <div className={s.customers} style={{ transform: phase === 'done' ? 'translateY(-14px)' : 'none' }}>
+        {FRIENDS.slice(0, 2).map((f, fi) => (
           <div key={fi} className={s.friend} style={{ animationDelay: `${fi * -0.45}s` }}>
             <div className={s.friendHead} style={{ background: f.head }} />
             <div className={s.friendBody} style={{ background: f.shirt }} />

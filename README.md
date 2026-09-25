@@ -1,6 +1,10 @@
 # Mattevägen
 
-Math game for children aged 6–8 (förskoleklass–åk 2). World 1 · Gröna dalen, 7 levels that cover all five areas of *centralt innehåll* for åk 1–3 (Lgr22).
+Math game for children aged 6–8 (förskoleklass–åk 2). World 1 · Gröna dalen has 8 levels that cover all six areas of *centralt innehåll* for åk 1–3 in Lgr22.
+
+**Live demo:** https://ledei.github.io/lr22-mattevagen/ (try [halfway](https://ledei.github.io/lr22-mattevagen/?start=halvvags) or [world complete](https://ledei.github.io/lr22-mattevagen/?start=klart) to see the adult view with data)
+
+Instructions, hints and math words can be read aloud with the browser's Swedish speech synthesis, so children who cannot read yet can play.
 
 ## Getting started
 ```bash

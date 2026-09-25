@@ -44,14 +44,14 @@ export const LV: Level[] = [
     ],
     finale: 'Över bäcken!', recap: '7 − 3 = 4', again: 'Tallinjen blir längre i Öknen – ända till 20.',
     centralt: ['tal.raknesatt', 'tal.metoder'], tip: 'Tejpa en tallinje på golvet och hoppa framåt och bakåt tillsammans.' },
-  { id: 5, name: 'Äppelträdet', skill: 'Dela lika', area: 'Taluppfattning och tals användning', board: 'share', ob: 'tree',
+  { id: 5, name: 'Äppelträdet', skill: 'Dela lika', area: 'Taluppfattning och tals användning', board: 'share', ob: 'tree', share: { baskets: 3, pile: 12, pileLabel: 'I trädet:', item: 'ett äpple' },
     intro: 'Tre kompisar vill ha äpplen från trädet. Alla ska få lika många.',
     word: { w: 'Dela lika', d: 'Alla får lika många.', ex: '12 delat på 3 = 4' },
     steps: [
       { t: 'share', title: 'Dela ut', text: 'Tryck på en korg för att ge ett äpple. Ge ett i taget, varvet runt.', help: ['Ge ett äpple till varje kompis. Sen börjar du om från den första.'], done: 'Rättvist!' },
       { t: 'type', title: 'Skriv', text: 'Hur många äpplen fick varje kompis?', ans: 4, help: ['Räkna äpplena i en av korgarna.', 'Nu syns antalet under korgarna.'], done: '12 delat på 3 blir 4.' },
     ],
-    finale: 'Alla är mätta!', recap: '12 ÷ 3 = 4', again: 'Hälften och dubbelt dyker upp i nästa värld.',
+    finale: 'Alla är mätta!', recap: '12 ÷ 3 = 4', again: 'Dubbelt och hälften väntar i Bageriet.',
     centralt: ['tal.brak', 'tal.raknesatt'], tip: 'Dela ut saker på riktigt, en i taget – till exempel frukt vid mellanmålet.' },
   { id: 6, name: 'Fågelräkningen', skill: 'Diagram', area: 'Sannolikhet och statistik', board: 'chart', ob: 'birds',
     intro: 'Många fåglar sitter på grenen. Vi sorterar dem och gör ett diagram.',
@@ -63,7 +63,20 @@ export const LV: Level[] = [
     ],
     finale: 'Diagrammet är klart!', recap: '4 − 2 = 2', again: 'I Öknen gör vi tabeller med streck.',
     centralt: ['stat.diagram'], tip: 'Räkna och sortera tillsammans: bilar som åker förbi, färger på strumpor. Rita staplar.' },
-  { id: 7, name: 'Trollets gåta', skill: 'Problemlösning', area: 'Problemlösning', board: 'frame', ob: 'troll', base: 5, baseC: 'apple', newC: 'gApple', radius: '50%', riddle: true,
+  { id: 7, name: 'Bageriet', skill: 'Dubbelt och hälften', area: 'Samband och förändring', board: 'frame', ob: 'bakery', base: 3, baseC: 'bun', newC: 'bunIced', radius: '50%',
+    share: { baskets: 2, pile: 6, pileLabel: 'På plåten:', item: 'en bulle' },
+    intro: 'Bagaren har bakat 3 bullar. Kunderna vill ha dubbelt så många. Sen ska bullarna delas lika på två kunder.',
+    word: { w: 'Dubbelt och hälften', d: 'Dubbelt är lika många till. Hälften är en av två lika stora delar.', ex: 'dubbelt 3 = 6 · hälften av 6 = 3' },
+    steps: [
+      { t: 'count', title: 'Räkna', text: 'Tryck på varje bulle och räkna högt.', help: ['Tryck på en bulle i taget. Siffran visar hur många du har räknat.'], done: '3 bullar!' },
+      { t: 'fill', to: 6, title: 'Gör dubbelt', text: 'Dubbelt betyder lika många till. Lägg dit lika många bullar som det redan finns.', help: ['Det finns 3 bullar. Lägg dit 3 till.', 'Tryck på en tom ruta tre gånger.'], done: 'Dubbelt så många!' },
+      { t: 'type', title: 'Skriv', text: 'Hur många bullar är dubbelt så många som 3?', eqL: '3 + 3 =', ans: 6, help: ['Räkna alla bullar i ramen.', 'Nu syns siffror. Titta på den sista bullen.'], done: 'Dubbelt så många som 3 är 6.' },
+      { t: 'share', board: 'share', title: 'Dela i hälften', text: 'Två kunder ska få lika många. Tryck på en kund för att ge en bulle.', help: ['Ge en bulle till varje kund. Sen börjar du om.'], done: 'Lika många var!' },
+      { t: 'type', board: 'share', title: 'Skriv', text: 'Hur många bullar fick varje kund?', eqL: 'Hälften av 6 =', ans: 3, help: ['Räkna bullarna hos en av kunderna.', 'Nu syns antalet under korgarna.'], done: 'Hälften av 6 är 3.' },
+    ],
+    finale: 'Bageriet är öppet!', recap: '3 + 3 = 6', again: 'I Öknen blir det dubbelt och hälften med större tal.',
+    centralt: ['samb.proportionella', 'tal.brak'], tip: 'Dubbla ett recept eller dela en frukt i två lika stora delar. Fråga: Hur många blir det? Är delarna lika stora?' },
+  { id: 8, name: 'Trollets gåta', skill: 'Problemlösning', area: 'Problemlösning', board: 'frame', ob: 'troll', base: 5, baseC: 'apple', newC: 'gApple', radius: '50%', riddle: true,
     intro: 'Trollet har 5 äpplen. Han får 3 till. Sen äter han upp 2. Hur många har han kvar?',
     word: { w: 'Kvar', d: 'Det som finns efter att något tagits bort.', ex: '8 − 2 = 6 kvar' },
     steps: [
@@ -80,7 +93,7 @@ export const LV: Level[] = [
 export const LEVEL_COUNT = LV.length;
 
 export const ITEMS: Record<Slot, Item[]> = {
-  hat: [{ id: 'none', name: 'Ingen' }, { id: 'cap', name: 'Keps', lv: 1 }, { id: 'helmet', name: 'Rymdhjälm', lv: 5 }, { id: 'crown', name: 'Krona', lv: 7 }],
+  hat: [{ id: 'none', name: 'Ingen' }, { id: 'cap', name: 'Keps', lv: 1 }, { id: 'helmet', name: 'Rymdhjälm', lv: 5 }, { id: 'chef', name: 'Kockmössa', lv: 7 }, { id: 'crown', name: 'Krona', lv: 8 }],
   shirt: [{ id: 'green', name: 'Grön' }, { id: 'blue', name: 'Blå' }, { id: 'purple', name: 'Lila', lv: 3 }, { id: 'orange', name: 'Orange', lv: 2 }],
   shoes: [{ id: 'sneakers', name: 'Gympaskor' }, { id: 'rocket', name: 'Raketskor', lv: 4 }],
   skin: [{ id: 'ljus', name: 'Ljus' }, { id: 'mellan', name: 'Mellan' }, { id: 'mork', name: 'Mörk' }, { id: 'alien', name: 'Alien', lv: 6 }, { id: 'robot', name: 'Robot' }],
@@ -93,11 +106,15 @@ export const REWARD: Record<number, [Slot, string, string]> = {
   4: ['shoes', 'rocket', 'Raketskor'],
   5: ['hat', 'helmet', 'Rymdhjälm'],
   6: ['skin', 'alien', 'Alien'],
-  7: ['hat', 'crown', 'Krona'],
+  7: ['hat', 'chef', 'Kockmössa'],
+  8: ['hat', 'crown', 'Krona'],
 };
 
-/** Map path: home, 7 levels, castle. */
-export const NODES: Point[] = [{ x: 200, y: 640 }, { x: 110, y: 566 }, { x: 272, y: 496 }, { x: 118, y: 426 }, { x: 266, y: 356 }, { x: 124, y: 286 }, { x: 262, y: 220 }, { x: 140, y: 150 }, { x: 276, y: 84 }];
+/** One reward item per level. */
+export const ITEM_COUNT = Object.keys(REWARD).length;
+
+/** Map path: home, 8 levels, castle. */
+export const NODES: Point[] = [{ x: 200, y: 640 }, { x: 264, y: 572 }, { x: 112, y: 512 }, { x: 268, y: 452 }, { x: 116, y: 392 }, { x: 264, y: 332 }, { x: 120, y: 272 }, { x: 262, y: 216 }, { x: 140, y: 150 }, { x: 276, y: 84 }];
 
 export const SHAPES: Shape[] = [
   { k: 'tri', w: 54, h: 48, clip: 'polygon(50% 0,100% 100%,0 100%)', c: 'B' }, { k: 'circle', w: 48, h: 48, c: 'R' }, { k: 'quad', w: 46, h: 46, c: 'yellow' },
@@ -110,7 +127,6 @@ export const COLS: ColorKey[] = ['R', 'B', 'yellow'];
 export const PAT: PatColor[] = ['R', 'B', 'B'];
 export const PAT_START: PatColor[] = ['R', 'B', 'B', 'R', 'B'];
 export const PAT_LENGTH = 9;
-export const SHARE_PILE = 12;
 export const TREE: [number, number][] = [[18, 22], [44, 12], [72, 18], [88, 40], [12, 48], [38, 38], [64, 42], [26, 66], [52, 62], [78, 66], [44, 80], [90, 58]];
 
 export const FRIENDS: { head: string; shirt: string }[] = [
